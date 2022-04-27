@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!--父工程POM文件-->
+
+  <!--Maven坐标-->
+  <groupId>com.kong.skylark</groupId>
+  <artifactId>skylarkcloud</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>skylark-api</module>
+    <module>skylark-common</module>
+    <module>skylark-auth</module>
+      <module>skylark-gateway</module>
+    <module>skylark-visual</module>
+    <module>skylark-serve</module>
+    <module>skylark-register</module>
+  </modules>
+
+  <!--统一管理jar包版本-->
+  <properties>
+    <skylark.version>1.0-SNAPSHOT</skylark.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.8</java.version>
+    <spring-boot.version>2.6.3</spring-boot.version>
+    <spring-cloud.version>2021.0.1</spring-cloud.version>
+    <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
+    <alibaba.nacos.version>2.0.4</alibaba.nacos.version>
+    <spring-boot-admin.version>2.6.3</spring-boot-admin.version>
+    <spring-boot.mybatis>2.2.2</spring-boot.mybatis>
+    <swagger.fox.version>3.0.0</swagger.fox.version>
+    <swagger.core.version>1.6.2</swagger.core.version>
+    <tobato.version>1.27.2</tobato.version>
+    <kaptcha.version>2.3.2</kaptcha.version>
+    <pagehelper.boot.version>1.4.1</pagehelper.boot.version>
+    <druid.version>1.2.8</druid.version>
+    <dynamic-ds.version>3.5.0</dynamic-ds.version>
+    <commons.io.version>2.11.0</commons.io.version>
+    <commons.fileupload.version>1.4</commons.fileupload.version>
+    <velocity.version>2.3</velocity.version>
+    <fastjson.version>1.2.80</fastjson.version>
+    <jjwt.version>0.9.1</jjwt.version>
+    <minio.version>8.2.2</minio.version>
+    <poi.version>4.1.2</poi.version>
+    <commons-collections.version>3.2.2</commons-collections.version>
+    <transmittable-thread-local.version>2.12.2</transmittable-thread-local.version>
+    <hutool.version>5.7.16</hutool.version>
+    <lombok.version>1.18.22</lombok.version>
+  </properties>
+
+  <!-- 依赖声明 -->
+  <!--子模块继承以后，提供作用：锁定版本+子模块不用写groupId和Version-->
+  <dependencyManagement>
+    <dependencies>
+
+      <!-- SpringCloud 微服务 -->
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- SpringCloud Alibaba 微服务 -->
+      <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+        <version>${spring-cloud-alibaba.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- Alibaba Nacos 配置 -->
+      <dependency>
+        <groupId>com.alibaba.nacos</groupId>
+        <artifactId>nacos-client</artifactId>
+        <version>${alibaba.nacos.version}</version>
+      </dependency>
+
+      <!--springcloud 2021.0.1 需要添加依赖  bootstrap配置文件才生效-->
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        <version>3.0.3</version>
+      </dependency>
+
+      <!-- SpringBoot 依赖配置 -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!--  SpringBoot 监控客户端 -->
+      <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-starter-client</artifactId>
+        <version>${spring-boot-admin.version}</version>
+      </dependency>
+
+      <!-- FastDFS 分布式文件系统 -->
+      <dependency>
+        <groupId>com.github.tobato</groupId>
+        <artifactId>fastdfs-client</artifactId>
+        <version>${tobato.version}</version>
+      </dependency>
+
+      <!-- Mybatis 依赖配置 -->
+      <dependency>
+        <groupId>org.mybatis.spring.boot</groupId>
+        <artifactId>mybatis-spring-boot-starter</artifactId>
+        <version>${spring-boot.mybatis}</version>
+      </dependency>
+
+      <!-- Swagger 依赖配置 -->
+      <dependency>
+        <groupId>io.swagger</groupId>
+        <artifactId>swagger-models</artifactId>
+        <version>${swagger.core.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.swagger</groupId>
+        <artifactId>swagger-annotations</artifactId>
+        <version>${swagger.core.version}</version>
+      </dependency>
+
+      <!-- 验证码 -->
+      <dependency>
+        <groupId>com.github.penggle</groupId>
+        <artifactId>kaptcha</artifactId>
+        <version>${kaptcha.version}</version>
+      </dependency>
+
+      <!-- pagehelper 分页插件 -->
+      <dependency>
+        <groupId>com.github.pagehelper</groupId>
+        <artifactId>pagehelper-spring-boot-starter</artifactId>
+        <version>${pagehelper.boot.version}</version>
+      </dependency>
+
+      <!-- io常用工具类 -->
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons.io.version}</version>
+      </dependency>
+
+      <!-- excel工具 -->
+      <dependency>
+        <groupId>org.apache.poi</groupId>
+        <artifactId>poi-ooxml</artifactId>
+        <version>${poi.version}</version>
+      </dependency>
+
+      <!-- 文件上传工具类 -->
+      <dependency>
+        <groupId>commons-fileupload</groupId>
+        <artifactId>commons-fileupload</artifactId>
+        <version>${commons.fileupload.version}</version>
+      </dependency>
+
+      <!-- 代码生成使用模板 -->
+      <dependency>
+        <groupId>org.apache.velocity</groupId>
+        <artifactId>velocity-engine-core</artifactId>
+        <version>${velocity.version}</version>
+      </dependency>
+
+      <!-- Collection 增强Java集合框架 -->
+      <dependency>
+        <groupId>commons-collections</groupId>
+        <artifactId>commons-collections</artifactId>
+        <version>${commons-collections.version}</version>
+      </dependency>
+
+      <!-- JSON 解析器和生成器 -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>${fastjson.version}</version>
+      </dependency>
+
+      <!-- JWT -->
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt</artifactId>
+        <version>${jjwt.version}</version>
+      </dependency>
+
+      <!-- 线程传递值 -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>transmittable-thread-local</artifactId>
+        <version>${transmittable-thread-local.version}</version>
+      </dependency>
+
+      <!-- 核心模块 -->
+      <dependency>
+        <groupId>com.kong.skylark</groupId>
+        <artifactId>skylark-common-core</artifactId>
+        <version>${skylark.version}</version>
+      </dependency>
+
+      <!-- 接口模块 -->
+      <dependency>
+        <groupId>com.kong.skylark</groupId>
+        <artifactId>skylark-common-swagger</artifactId>
+        <version>${skylark.version}</version>
+      </dependency>
+
+      <!-- 安全模块 -->
+      <dependency>
+        <groupId>com.kong.skylark</groupId>
+        <artifactId>skylark-common-security</artifactId>
+        <version>${skylark.version}</version>
+      </dependency>
+
+      <!-- 权限范围 -->
+      <dependency>
+        <groupId>com.kong.skylark</groupId>
+        <artifactId>skylark-common-datascope</artifactId>
+        <version>${skylark.version}</version>
+      </dependency>
+
+      <!-- 多数据源 -->
+      <dependency>
+        <groupId>com.kong.skylark</groupId>
+        <artifactId>skylark-common-datasource</artifactId>
+        <version>${skylark.version}</version>
+      </dependency>
+
+      <!-- 日志记录 -->
+      <dependency>
+        <groupId>com.kong.skylark</groupId>
+        <artifactId>skylark-common-log</artifactId>
+        <version>${skylark.version}</version>
+      </dependency>
+
+      <!-- 缓存服务 -->
+      <dependency>
+        <groupId>com.kong.skylark</groupId>
+        <artifactId>skylark-common-redis</artifactId>
+        <version>${skylark.version}</version>
+      </dependency>
+
+      <!-- 系统接口 -->
+      <dependency>
+        <groupId>com.kong.skylark</groupId>
+        <artifactId>skylark-api-system</artifactId>
+        <version>${skylark.version}</version>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.7.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <configuration>
+          <locales>en,fr</locales>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

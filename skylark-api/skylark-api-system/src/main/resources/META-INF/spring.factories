@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.kong.skylark.system.api.factory.RemoteUserFallbackFactory,\
+  com.kong.skylark.system.api.factory.RemoteLogFallbackFactory, \
+  com.kong.skylark.system.api.factory.RemoteFileFallbackFactory

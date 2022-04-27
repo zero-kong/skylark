@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "spring.security.enabled",
+      "type": "java.lang.String",
+      "description": "Description for spring.security.enabled."
+    },
+    {
+      "name": "spring.boot.admin.client.url",
+      "type": "java.lang.String",
+      "description": "Description for spring.boot.admin.client.url."
+    }
+  ] }
